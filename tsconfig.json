@@ -4,14 +4,15 @@
       "module": "esnext",
       "allowJs": true,
       "strict": true,
-      "baseUrl": ".",
-      "paths": {
-        // The following imports no longer necessary
-        // due to moduleResolution: "node"
-          // "grpc-web": ["node_modules/grpc-web/index.d.ts"],
-          // "htm/preact": ["node_modules/htm/preact/index.d.ts"],
-          // "preact": ["node_modules/preact/src/index.d.ts"]
-      },
+      // "baseUrl": ".",
+      // "paths": {
+      //   // The following imports no longer necessary
+      //   // due to moduleResolution: "node"
+      //     // "grpc-web": ["node_modules/grpc-web/index.d.ts"],
+      //     // "htm/preact": ["node_modules/htm/preact/index.d.ts"],
+      //     // "preact": ["node_modules/preact/src/index.d.ts"]
+      //     // "preact": ["https://unpkg.com/preact@10.0.5/dist/preact.module.js?module"]
+      // },
       "outDir": "out",
       // node resolution mode allows VSCode to find 
       // nested imports and imports in node_modules

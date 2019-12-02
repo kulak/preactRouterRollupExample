@@ -1,6 +1,6 @@
-import { FunctionalComponent } from "preact"
+import { FunctionalComponent } from 'preact'
 import { html } from 'htm/preact'
-import { Link } from "preact-router/match"
+import { Link } from 'preact-router/match'
 
 const style = {
     "header":"header",
