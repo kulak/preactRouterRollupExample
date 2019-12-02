@@ -12,8 +12,8 @@ export default {
 	input: 'src/index.js',
 	external: [
 		'preact', 
-		'htm', 'htm/preact', 
-		'preact-router' // , 'preact-router/match'
+		'htm', 
+		'htm/preact'
 	],
 	output: {
 		file: 'build/bundle-app.js',
@@ -28,28 +28,18 @@ export default {
 		globals: {
 			'preact': 'preact',
 			'htm': 'htm',
-			'htm/preact': 'htmPreact',
-			'preact-router': 'preactRouter',
-			// 'preact-router/match': 'match'
+			'htm/preact': 'htmPreact'
 		}
-		// paths: {
-		// 	'preact': 'https://unpkg.com/preact@10.0.5/dist/preact.module.js?module',
-		// 	'htm': 'https://unpkg.com/htm@2.2.1/dist/htm.js?module',
-		// 	'htm/preact': 'https://unpkg.com/htm@2.2.1/preact/index.js?module',
-		// 	'preact-router': 'https://unpkg.com/preact-router@3.1.0/dist/preact-router.js?module',
-		// 	'preact-router/match': 'https://unpkg.com/preact-router@3.1.0/match.js?module'
-		// }
 	},
 	plugins: [
 		copy({
 			targets: [{ src: 'assets/*', dest: 'build' }]
 		}),
         resolve({
-			//only: [ 'preact-router/match' ] // *node_modules\/preact-router\/
+			//only: [ 'module-name' ]
 		}), // tells Rollup how to find commonjs in node_modules
         typescript({module: 'esnext'}),
 		commonjs({extensions: ['.js', '.ts']}), // converts commonjs to ES modules
 		production && terser() // minify, but only in production
 	],
-	treeshake: false
 };

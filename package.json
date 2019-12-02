@@ -5,12 +5,11 @@
   "dependencies": {
     "htm": "^2.2.1",
     "preact": "^10.0.5",
-    "preact-render-to-string": "^5.1.1",
-    "preact-router": "^3.1.0"
+    "wouter-preact": "^2.4.0"
   },
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -c -w --no-treeshake",
+    "watch": "rollup -c -w",
     "serve": "serve build",
     "start": "npm-run-all --parallel serve watch"
   },

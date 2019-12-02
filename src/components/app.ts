@@ -1,9 +1,10 @@
-import { render, FunctionalComponent } from 'preact'
+import { render, FunctionalComponent, VNode } from 'preact'
 import { html } from 'htm/preact'
-import { Route, Router, RouterOnChangeArgs } from 'preact-router'
+import { useLocation } from "wouter-preact";
 
 import Header from './header'
 import Home from '../routes/home'
+
 
 const App: FunctionalComponent = () => {
     let currentUrl: string
@@ -12,16 +13,24 @@ const App: FunctionalComponent = () => {
 	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
 	 *	@param {string} event.url	The newly routed URL
 	 */
-	const handleRoute = (e: RouterOnChangeArgs) => {
-        currentUrl = e.url
-	}
+	// const handleRoute = (e: RouterOnChangeArgs) => {
+    //     currentUrl = e.url
+	// }
+
+    const [location, setLocation] = useLocation();
+    let page: VNode = html`<h2>Default Location</h2>`
+    switch (location) {
+        case "/":
+            page = html`<h2>Root Location</h2>`
+            break;
+        default:
+            break;
+    }
 
     return html `
         <div id="app">
             <${Header} />
-            <${Router} onChange=${handleRoute}>
-                <${Route} path="/" component=${Home} />
-            </${Router}>
+            ${page}
         </div>
     `
 }
