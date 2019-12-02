@@ -1,5 +1,5 @@
-// import resolve from 'rollup-plugin-node-resolve';
-// import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy'
@@ -13,7 +13,7 @@ export default {
 	external: [
 		'preact', 
 		'htm', 'htm/preact', 
-		'preact-router', 'preact-router/match'
+		'preact-router' // , 'preact-router/match'
 	],
 	output: {
 		file: 'build/bundle-app.js',
@@ -44,9 +44,11 @@ export default {
 		copy({
 			targets: [{ src: 'assets/*', dest: 'build' }]
 		}),
-        // resolve(), // tells Rollup how to find commonjs in node_modules
+        resolve({
+			//only: [ 'preact-router/match' ] // *node_modules\/preact-router\/
+		}), // tells Rollup how to find commonjs in node_modules
         typescript({module: 'esnext'}),
-		// commonjs({extensions: ['.js', '.ts']}), // converts commonjs to ES modules
+		commonjs({extensions: ['.js', '.ts']}), // converts commonjs to ES modules
 		production && terser() // minify, but only in production
 	],
 	treeshake: false
